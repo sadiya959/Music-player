@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Media Player</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="content">
+        <h2 class="title">Ive - off the record</h2>
+        <div class="img">
+            <img class="music-photo" src="/img.jpg" alt="music photo" />
+            <div class="skip-wrapper">
+                 <div class="heart"></div>
+                <div class="skip"></div>
+
+            </div>
+        </div>
+        <div class="controllers-container">
+          <div class="controllers">
+            <button class="back">
+              <img src="back.svg" alt="backword" />
+            </button>
+            <button class="play-button">
+              <img src="/Group 1.svg" alt="play button" />
+            </button>
+            <button class="next">
+              <img src="next.svg" alt="next" />
+            </button>
+          </div>
+          <div class="lines">
+            <span class="right-line"></span>
+            <span class="left-line"></span>
+          </div>
+          <div class="cont">
+            <select name="tone" id="tone">
+                <option value="0.5x">0.5x</option>
+                <option value="1">1x</option>
+                <option value="1.25x">1x</option>
+                <option value="1.5x">1.5x</option>
+                <option value="2x">2x</option>
+            </select>
+           <img class="tiny-hearts" src="/tonyHearts.svg" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
