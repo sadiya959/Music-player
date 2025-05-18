@@ -57,7 +57,6 @@ img {
 
 
 
-
 .skip-wrapper {
   position: absolute;
   bottom: 10%;
@@ -67,6 +66,9 @@ img {
   align-items: center;
   gap: 0.5rem;
 }
+
+
+
 
 .heart {
   position: relative;
