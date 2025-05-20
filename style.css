@@ -11,12 +11,12 @@ body {
 .container {
   width: 100%;
   max-width: 31rem;
-  border-radius: 36px;
-  margin: 2% auto;
   height: 45.625rem;
-  box-shadow: 0 5px 5px 3px rgba(0, 0, 0, 0.1);
+  margin: 2% auto;
   padding: 1.5rem;
+  border-radius: 36px;
   background-color: #d8b7c6;
+  box-shadow: 0 5px 5px 3px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -41,34 +41,37 @@ img {
 }
 
 .music-photo {
-  max-width: 100%;
-  height: 100%;
   width: 28.9375rem;
   height: 26.3125rem;
   border-radius: 23px;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin: 1rem 0;
 }
 
 .img {
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .skip-wrapper {
   position: absolute;
   bottom: 6%;
   right: 5%;
-  justify-content: center;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
 }
 
 .time {
   display: flex;
+  justify-content: space-between;
   color: white;
   margin-top: -3rem;
   margin-inline: 2rem;
+  gap: 20rem;
 }
 
 .heart {
@@ -79,6 +82,11 @@ img {
   transform: rotate(-45deg);
   margin-right: -1rem;
   cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.heart:hover {
+  transform: scale(1.2) rotate(-45deg);
 }
 
 .heart::before,
@@ -115,29 +123,23 @@ img {
   width: 0%;
   height: 100%;
   border-radius: 5px;
-  cursor: pointer;
   transition: width 0.3s ease;
-}
-
-.time {
-  display: flex;
-  justify-content: space-between;
 }
 
 button {
   background-color: transparent;
   border: none;
+  cursor: pointer;
 }
 
 .controllers-container {
   background-color: #e3b7b7;
   width: 28.9375rem;
-  height: auto;
-  border-radius: 30px;
   border: 3px solid #c67b9c;
+  border-radius: 30px;
+  margin-top: 1.5rem;
   display: flex;
   flex-direction: column;
-  margin-top: 1.5rem;
 }
 
 .controllers {
@@ -152,13 +154,19 @@ button {
 .next img {
   width: 4.85rem;
   height: 2.85rem;
-  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
 }
 
 .play-button img {
   width: 5.125rem;
   height: 5.125rem;
-  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.back img:hover,
+.next img:hover,
+.play-button img:hover {
+  transform: scale(1.1);
 }
 
 .lines {
@@ -179,142 +187,95 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 0 2rem;
-  margin-top: 1.5rem;
+  margin: 1.5rem 2rem 0;
   padding-bottom: 1.5rem;
 }
 
 select {
   background-color: #c67b9c;
   color: rgb(206, 206, 206);
-  outline: none;
   border: none;
   border-radius: 20px;
   padding: 0.2rem;
+  outline: none;
 }
 
-
-.volume{
+.volume {
   display: flex;
   align-items: center;
   gap: 0.3rem;
 }
 
-
-.fa-volume-down{
+.fa-volume-down {
   color: #c67b9c;
 }
 
-
-
-
- input[type="range"] {
+input[type="range"] {
   accent-color: #c96a93;
 }
 
-
-
-
+/* Mobile Responsive */
 @media (max-width: 500px) {
   .container {
     width: 100%;
-    padding: 5rem;	
-    height: auto;
     padding: 3rem;
+    height: auto;
     margin: 0 auto;
     border-radius: 0;
   }
 
-
   .music-photo {
-  width: 20.9375rem;
-  height: 20.3125rem;
-  margin: 1rem 0;
-}
+    width: 20.9375rem;
+    height: 20.3125rem;
+    margin: 1rem 0;
+  }
 
+  .title {
+    width: 15.9375rem;
+    height: 3.1875rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
 
+  .skip-wrapper {
+    width: 90%;
+    bottom: 6%;
+    left: 5%;
+  }
 
-.title {
-  width: 15.9375rem;
-  height: 3.1875rem;
-  font-size: 1.2rem;
-  font-weight: 600;
-}
+  .time {
+    font-size: 0.8rem;
+    font-weight: 600;
+    gap: 13rem;
+  }
 
+  .controllers-container {
+    width: 20.9375rem;
+    margin-top: 2rem;
+  }
 
-.img {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  width: 100%;  
-  height: 100%;
-  margin: 0 auto;
-  flex-direction: column;
-}
+  .back img,
+  .next img {
+    width: 4.5rem;
+    height: 1.5rem;
+  }
 
-.skip-wrapper {
-  width: 90%;
-  bottom: 6%;
-  left: 5%;
-}
+  .play-button img {
+    width: 4rem;
+    height: 4rem;
+  }
 
-.time {
- justify-content: space-between;
-  margin-top: -3rem;
-  margin-inline: 2rem;
-  color: white;
-  font-size: 0.8rem;
-  font-weight: 600;
-  gap: 13rem;
-}
+  .lines {
+    margin: 0 1rem;
+  }
 
+  .right-line,
+  .left-line {
+    width: 5rem;
+  }
 
-.controllers-container {
-  width: 20.9375rem;
-  height: auto;
-  margin-top: 2rem;
-}
-
-
-.back img,
-.next img {
-  width: 4.5rem;
-  height: 1.5rem;
-}
-
-.play-button img {
-  width: 4rem;
-  height: 4rem;
-}
-
-.lines {
- margin: 0 1rem;
-}
-
-
-
-
-.right-line,
-.left-line {
-  background-color: #c67b9c;
-  width: 5rem;
-  height: 0.4rem;
-  border-radius: 5px;
-}
-
-
-
-select {
-  border-radius: 10px;
-  padding: 0;
-}
-
-
-.volume{
-  display: flex;
-  align-items: center;
-  gap: 0.3rem;
-}
-
+  select {
+    border-radius: 10px;
+    padding: 0;
+  }
 }
