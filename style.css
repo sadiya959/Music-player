@@ -54,21 +54,23 @@ img {
   position: relative;
 }
 
-
-
-
 .skip-wrapper {
   position: absolute;
-  bottom: 10%;
-  right: 6%;
+  bottom: 6%;
+  right: 5%;
   justify-content: center;
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
 
+.time {
+  display: flex;
+  color: white;
+  margin-top: -3rem;
+  margin-inline: 2rem;
 
-
+}
 
 .heart {
   position: relative;
@@ -77,6 +79,7 @@ img {
   background-color: #c67b9c;
   transform: rotate(-45deg);
   margin-right: -1rem;
+  cursor: pointer;
 }
 
 .heart::before,
@@ -99,24 +102,28 @@ img {
   left: 0.5rem;
 }
 
-.skip {
-  background-color: #c67b9c;
+.progress-container {
   width: 405px;
   height: 0.4rem;
+  background-color: #eee;
   border-radius: 5px;
+  overflow: hidden;
   cursor: pointer;
 }
 
+.progress-bar {
+  background-color: #c67b9c;
+  width: 0%;
+  height: 100%;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: width 0.3s ease;
+}
 
-
-
-
-
-
-
-
-
-
+.time {
+  display: flex;
+  justify-content: space-between;
+}
 
 button {
   background-color: transparent;
@@ -131,6 +138,7 @@ button {
   border: 3px solid #c67b9c;
   display: flex;
   flex-direction: column;
+  margin-top: 1.5rem;
 }
 
 .controllers {
@@ -157,29 +165,24 @@ button {
 .lines {
   display: flex;
   justify-content: space-between;
-  margin: -0.6rem 3.7rem;
+  margin: -0.6rem 2rem;
 }
 
 .right-line,
 .left-line {
   background-color: #c67b9c;
-  width: 5rem;
+  width: 8rem;
   height: 0.4rem;
   border-radius: 5px;
-}
-
-.tiny-hearts {
-  width: 6.1875rem;
-  height: 1.75rem;
 }
 
 .cont {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 0 3rem;
+  margin: 0 2rem;
   margin-top: 1.5rem;
-  padding-bottom: 1rem;
+  padding-bottom: 1.5rem;
 }
 
 select {
@@ -190,3 +193,25 @@ select {
   border-radius: 20px;
   padding: 0.2rem;
 }
+
+
+.volume{
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+
+.fa-volume-down{
+  color: #c67b9c;
+}
+
+
+
+
+ input[type="range"] {
+  accent-color: #c96a93;
+}
+
+
+

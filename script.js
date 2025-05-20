@@ -8,6 +8,10 @@ const nexttBtn = document.querySelector(".next");
 const title = document.querySelector(".title");
 const skip = document.querySelector(".skip");
 const speed = document.querySelector("#speed");
+const progressContainer = document.querySelector(".progress-container");
+const progressBar = document.querySelector(".progress-bar");
+const heart = document.querySelector(".heart");
+const volumeSlider = document.querySelector("#volume");
 
 // Song data
 const songs = [
@@ -55,12 +59,14 @@ function loadSong(song) {
 
 loadSong(songs[songIndex]);
 
+// play
 function playSong() {
   playBtn.querySelector(".play-img").src = "./images/playing.svg";
   audioElement.play();
   isPlaying = true;
 }
 
+// pause
 function pauseSong() {
   playBtn.querySelector(".play-img").src = "./images/play.svg";
   audioElement.pause();
@@ -84,6 +90,7 @@ function nextSong() {
   }, 300);
 }
 
+// prev song functionality
 function prevSong() {
   pauseSong();
 
@@ -98,6 +105,60 @@ function prevSong() {
 
     playSong();
   }, 300);
+}
+
+// update Progress
+function updateProgress(e) {
+  const { duration, currentTime } = e.currentTarget;
+  if (isNaN(duration)) return;
+
+  const progressPercent = (currentTime / duration) * 100;
+
+  progressBar.style.width = `${progressPercent}%`;
+  heart.style.left = `${progressPercent}%`;
+
+  // duration calculation
+  const durationMinutes = Math.floor(duration / 60);
+  let durationSeconds = Math.floor(duration % 60);
+
+  if (durationSeconds < 10) {
+    durationSeconds = `0${durationSeconds}`;
+  }
+  document.querySelector(
+    ".total-time"
+  ).textContent = `${durationMinutes}:${durationSeconds}`;
+
+  // current time calculation
+  const currentMinutes = Math.floor(currentTime / 60);
+  let currenSeconds = Math.floor(currentTime % 60);
+
+  if (currenSeconds < 10) {
+    currenSeconds = `0${currenSeconds}`;
+  }
+
+  document.querySelector(
+    ".current-time"
+  ).textContent = `${currentMinutes}:${currenSeconds}`;
+
+  audioElement.playbackRate = speedStart;
+}
+
+// set Progress
+
+function setProgress(e) {
+  const width = this.clientWidth;
+
+  const clickX = e.offsetX;
+
+  const duration = audioElement.duration;
+
+  if (isNaN(duration)) return;
+
+  const newTime = (clickX / width) * duration;
+  audioElement.currentTime = newTime;
+
+  progressBar.style.width = `${clickX}px`;
+  heart.style.left = `${clickX}px`;
 }
 
 // events
@@ -116,3 +177,24 @@ nexttBtn.addEventListener("click", () => {
 prevBtn.addEventListener("click", () => {
   prevSong();
 });
+
+audioElement.addEventListener("timeupdate", updateProgress);
+
+progressContainer.addEventListener("click", setProgress);
+
+audioElement.addEventListener("ended", () => {
+  const playImg = (playBtn.querySelector(".play-img").src =
+    "./images/play.svg");
+  playSong();
+});
+
+volumeSlider.addEventListener("input", (e) => {
+  audioElement.volume = e.target.value;
+});
+
+speed.addEventListener("change", (e) => {
+  speedStart = parseFloat(e.target.value);
+  audioElement.playbackRate = speedStart;
+});
+
+audioElement.addEventListener("loadeddata", () => updateProgress);
