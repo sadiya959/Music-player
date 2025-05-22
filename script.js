@@ -144,7 +144,6 @@ function updateProgress(e) {
 }
 
 // set Progress
-
 function setProgress(e) {
   const width = this.clientWidth;
 
@@ -198,3 +197,5 @@ speed.addEventListener("change", (e) => {
 });
 
 audioElement.addEventListener("loadeddata", () => updateProgress);
+
+
